@@ -18,7 +18,7 @@ class GameFactory extends Factory
     {
         return [
             'name' => ucfirst(fake()->word()),
-            'description' => fake()->paragraph(),
+            'description' => fake()->paragraph(5),
             'year' => fake()->year(),
             'cover' => 'https://picsum.photos/seed/' . fake()->word() . '/600/600',
         ];

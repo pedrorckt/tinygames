@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class CollectionController extends Controller
@@ -50,5 +51,14 @@ class CollectionController extends Controller
     public function destroy(Collection $collection)
     {
         $collection->delete();
+    }
+
+    public function addGame(Request $request, Collection $collection)
+    {
+        $user = auth()->user();
+        if ($user->id !== $collection->user_id) {
+            abort(403);
+        }
+        $collection->games()->attach($request->game_id);
     }
 }

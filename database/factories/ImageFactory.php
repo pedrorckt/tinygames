@@ -19,11 +19,11 @@ class ImageFactory extends Factory
         $seed = fake()->word();
         
         return [
-            'game_id' => fake()->numberBetween(1, 1000),
-            'url' => 'https://picsum.photos/' . $seed . '/picsum/800/800',
-            'url_sm' => 'https://picsum.photos/' . $seed . '/picsum/200/200',
-            'url_md' => 'https://picsum.photos/' . $seed . '/picsum/400/400',
-            'url_lg' => 'https://picsum.photos/' . $seed . '/picsum/600/600',
+            'game_id' => fake()->numberBetween(1, 10000),
+            'url' => 'https://picsum.photos/seed/' . $seed . '/1280/720',
+            'url_sm' => 'https://picsum.photos/seed/' . $seed . '/640/360',
+            'url_md' => 'https://picsum.photos/seed/' . $seed . '/960/540',
+            'url_lg' => 'https://picsum.photos/seed/' . $seed . '/1280/720',
         ];
     }
 }

@@ -26,3 +26,5 @@ Route::get('/platforms', 'App\Http\Controllers\PlatformController@index');
 Route::get('/platforms/{platform}', 'App\Http\Controllers\PlatformController@show');
 
 Route::middleware(['auth:sanctum'])->get('/collections', 'App\Http\Controllers\CollectionController@index');
+Route::middleware(['auth:sanctum'])->post('/collections', 'App\Http\Controllers\CollectionController@store');
+Route::middleware(['auth:sanctum'])->post('/collections/{collection}/add', 'App\Http\Controllers\CollectionController@addGame');
