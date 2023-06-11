@@ -29,7 +29,9 @@ class PlatformController extends Controller
      */
     public function show(Platform $platform)
     {
-        return $platform->load(['games']);
+        $games = $platform->games()->paginate(10);
+        $platform->games = $games;
+        return $platform;
     }
 
     /**

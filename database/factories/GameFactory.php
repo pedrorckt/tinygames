@@ -20,7 +20,7 @@ class GameFactory extends Factory
             'name' => ucfirst(fake()->word()),
             'description' => fake()->paragraph(),
             'year' => fake()->year(),
-            'cover' => 'https://picsum.photos/seed/' . fake()->word() . '/picsum/800/800',
+            'cover' => 'https://picsum.photos/seed/' . fake()->word() . '/600/600',
         ];
     }
 }

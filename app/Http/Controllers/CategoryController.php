@@ -38,7 +38,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return $category->load(['games']);
+        $games = $category->games()->paginate(10);
+        $category->games = $games;
+        return $category;
     }
 
     /**

@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware(['auth:sanctum'])->get('/me', 'App\Http\Controllers\CollectionController@index');
 
 Route::get('/games', 'App\Http\Controllers\GameController@index');
 Route::get('/games/{game}', 'App\Http\Controllers\GameController@show');
@@ -26,3 +24,5 @@ Route::get('/categories/{category}', 'App\Http\Controllers\CategoryController@sh
 
 Route::get('/platforms', 'App\Http\Controllers\PlatformController@index');
 Route::get('/platforms/{platform}', 'App\Http\Controllers\PlatformController@show');
+
+Route::middleware(['auth:sanctum'])->get('/collections', 'App\Http\Controllers\CollectionController@index');

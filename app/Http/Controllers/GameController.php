@@ -12,7 +12,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::with(['categories','platforms','images'])->paginate(10);
+        $games = Game::with(['categories','platforms','images'])->paginate(12);
         return $games;
     }
 

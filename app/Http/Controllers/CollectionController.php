@@ -13,8 +13,9 @@ class CollectionController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $collections = $user->collections()->with(['games'])->paginate(10);
-        return $collections;
+        $collections = $user->collections()->with(['games','games.categories','games.platforms'])->paginate(10);
+        $user->collections = $collections;
+        return $user;
     }
 
     /**
