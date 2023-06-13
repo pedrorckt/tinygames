@@ -19,7 +19,7 @@ class ImageFactory extends Factory
         $seed = fake()->word();
         
         return [
-            'game_id' => fake()->numberBetween(1, 100),
+            'game_id' => fake()->numberBetween(1, 10_000),
             'url' => 'https://picsum.photos/seed/' . $seed . '/1280/720',
             'url_sm' => 'https://picsum.photos/seed/' . $seed . '/640/360',
             'url_md' => 'https://picsum.photos/seed/' . $seed . '/960/540',
