@@ -12,16 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::paginate(20);
         return $categories;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -38,17 +30,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $games = $category->games()->paginate(10);
+        $games = $category->games()->paginate(8);
         $category->games = $games;
         return $category;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Category $category)
-    {
-        //
     }
 
     /**
@@ -56,7 +40,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
     }
 
     /**
@@ -64,6 +48,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
     }
 }

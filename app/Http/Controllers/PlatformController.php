@@ -12,7 +12,7 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        $platforms = Platform::paginate(10);
+        $platforms = Platform::paginate(20);
         return $platforms;
     }
 
@@ -21,7 +21,8 @@ class PlatformController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $platform = Platform::create($request->all());
+        return $platform;
     }
 
     /**
@@ -29,7 +30,7 @@ class PlatformController extends Controller
      */
     public function show(Platform $platform)
     {
-        $games = $platform->games()->paginate(10);
+        $games = $platform->games()->paginate(8);
         $platform->games = $games;
         return $platform;
     }

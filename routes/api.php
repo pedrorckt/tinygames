@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/me', 'App\Http\Controllers\CollectionController@index');
-
 Route::get('/games', 'App\Http\Controllers\GameController@index');
+Route::get('/games/search', 'App\Http\Controllers\GameController@search');
 Route::get('/games/{game}', 'App\Http\Controllers\GameController@show');
 
 Route::get('/categories', 'App\Http\Controllers\CategoryController@index');
@@ -25,6 +24,20 @@ Route::get('/categories/{category}', 'App\Http\Controllers\CategoryController@sh
 Route::get('/platforms', 'App\Http\Controllers\PlatformController@index');
 Route::get('/platforms/{platform}', 'App\Http\Controllers\PlatformController@show');
 
-Route::middleware(['auth:sanctum'])->get('/collections', 'App\Http\Controllers\CollectionController@index');
-Route::middleware(['auth:sanctum'])->post('/collections', 'App\Http\Controllers\CollectionController@store');
-Route::middleware(['auth:sanctum'])->post('/collections/{collection}/add', 'App\Http\Controllers\CollectionController@addGame');
+Route::get('/twitch/top', 'App\Http\Controllers\GameController@twitchTopGames');
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::get('/me', 'App\Http\Controllers\CollectionController@index');
+
+    Route::post('/games', 'App\Http\Controllers\GameController@store');
+    Route::put('/games/{game}', 'App\Http\Controllers\GameController@update');
+    Route::delete('/games/{game}', 'App\Http\Controllers\GameController@destroy');
+
+    Route::get('/collections', 'App\Http\Controllers\CollectionController@index');
+    Route::post('/collections', 'App\Http\Controllers\CollectionController@store');
+    Route::post('/collections/{collection}/add', 'App\Http\Controllers\CollectionController@addGame');
+    Route::delete('/collections/{collection}', 'App\Http\Controllers\CollectionController@destroy');
+    Route::delete('/collections/{collection}/games/{game}', 'App\Http\Controllers\CollectionController@removeGame');
+
+});

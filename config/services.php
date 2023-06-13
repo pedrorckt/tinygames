@@ -31,4 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'twitch' => [
+        'client_id' => env('TWITCH_CLIENT_ID'),
+        'client_secret' => env('TWITCH_CLIENT_SECRET'),
+        'token' => env('TWITCH_TOKEN'),
+        'base_url' => env('TWITCH_BASE_URL', 'https://api.igdb.com/v4/games'),
+    ],
+
 ];

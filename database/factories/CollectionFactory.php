@@ -17,7 +17,7 @@ class CollectionFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => fake()->numberBetween(1, 10000),
+            'user_id' => fake()->numberBetween(1, 100),
             'name' => ucfirst(fake()->word()),
         ];
     }

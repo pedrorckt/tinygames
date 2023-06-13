@@ -22,16 +22,16 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(PlatformSeeder::class);
 
-        User::factory(10000)->create();
+        User::factory(100)->create();
         
-        Game::factory(10000)->create()->each(function ($game) {
+        Game::factory(100)->create()->each(function ($game) {
             $game->categories()->attach(Category::all()->random(2));
             $game->platforms()->attach(Platform::all()->random(3));
         });
         
-        $this->call(CollectionSeeder::class);
+        // $this->call(CollectionSeeder::class);
 
-        Image::factory(50000)->create();
+        Image::factory(500)->create();
 
         User::factory()->create([
             'name' => 'Test User',

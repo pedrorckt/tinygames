@@ -28,5 +28,24 @@ class Game extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    public static function search($request)
+    {
+        $games = Game::with(['categories','platforms']);
+        
+        if ($request->has('startYear') || $request->has('endYear')) {
+            $min = $request->startYear ?? 0;
+            $max = $request->endYear ?? 3000;
+            $games->whereBetween('year', [$min, $max]);
+        }
+
+        if ($request->has('minScore') || $request->has('maxScore')) {
+            $min = $request->minScore ?? 0;
+            $max = $request->maxScore ?? 100;
+            $games->whereBetween('score', [$min, $max]);
+        }
+
+        return $games;
+    }
     
 }

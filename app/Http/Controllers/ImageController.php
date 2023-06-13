@@ -12,15 +12,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $images = Image::paginate(8);
+        return $images;
     }
 
     /**
@@ -28,7 +21,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = Image::create($request->all());
     }
 
     /**
@@ -36,15 +29,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Image $image)
-    {
-        //
+        return $image;
     }
 
     /**
@@ -52,7 +37,7 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+        $image->update($request->all());
     }
 
     /**
@@ -60,6 +45,6 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        $image->delete();
     }
 }

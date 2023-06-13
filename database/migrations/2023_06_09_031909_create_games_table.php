@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->year('year');
+            $table->year('year')->index();
+            $table->unsignedTinyInteger('score')->index();
             $table->text('description');
             $table->string('cover');
             $table->timestamps();

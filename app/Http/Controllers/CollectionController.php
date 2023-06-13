@@ -61,4 +61,13 @@ class CollectionController extends Controller
         }
         $collection->games()->attach($request->game_id);
     }
+
+    public function removeGame(Request $request, Collection $collection, Game $game)
+    {
+        $user = auth()->user();
+        if ($user->id !== $collection->user_id) {
+            abort(403);
+        }
+        $collection->games()->detach($game);
+    }
 }
